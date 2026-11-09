@@ -1,0 +1,43 @@
+package library.model;
+
+public class Book implements Lendable {
+    private String title;
+    private String author;
+    private boolean borrowed;
+
+    public Book(String title, String author) {
+        this.title = title;
+        this.author = author;
+        this.borrowed = false;
+    }
+
+    @Override
+    public void borrow() {
+        if (!borrowed) {
+            borrowed = true;
+        } else {
+            System.out.println("This book is already borrowed.");
+        }
+    }
+
+    @Override
+    public void returnItem() {
+        if (borrowed) {
+            borrowed = false;
+        } else {
+            System.out.println("This book was not borrowed.");
+        }
+    }
+
+    @Override
+    public boolean isBorrowed() {
+        return borrowed;
+    }
+
+    // Pour remplacer getTitle() et getAuthor() par une seule méthode getDescription() 
+    @Override
+    public String getDescription() {
+        return title + " by " + author;
+    }
+    
+}
